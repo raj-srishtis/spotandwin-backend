@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\SpotAndWinCount;
+use App\Models\ChallengeParticipant;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class ApiController extends Controller
 {
     public function index(Request $request) {
         if ($request->exists('id')) {
             try {
-                $entry = SpotAndWinCount::findOrFail($request->id);
+                $entry = ChallengeParticipant::findOrFail($request->id);
                 $data = self::generateModal($request);
                 return response()->json([
                     'status' => $entry->update($data),
@@ -25,7 +25,7 @@ class HomeController extends Controller
         } else {
             try {
                 $data = self::generateModal($request);
-                $entry = SpotAndWinCount::create($data);
+                $entry = ChallengeParticipant::create($data);
                 return response()->json([
                     'status' => true,
                     'data' => [

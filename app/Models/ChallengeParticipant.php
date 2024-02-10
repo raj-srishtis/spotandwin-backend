@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SpotAndWinCount extends Model
+class ChallengeParticipant extends Model
 {
     use HasFactory;
 
-    protected $table = 'spot_and_win_count';
+    protected $table = 'challenge_participants';
     public $timestamps = false;
 
     protected $fillable = [

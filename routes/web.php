@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +16,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect(route('login'));
 });
+
+Auth::routes(['register' => false]);
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
