@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/', [ApiController::class, 'index']);
+Route::middleware('cors')->post('/', [ApiController::class, 'index']);
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
