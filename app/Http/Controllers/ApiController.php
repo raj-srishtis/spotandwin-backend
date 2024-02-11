@@ -10,7 +10,7 @@ class ApiController extends Controller
     public function index(Request $request) {
         if ($request->exists('id')) {
             try {
-                $entry = ChallengeParticipant::findOrFail($request->id);
+                $entry = ChallengeParticipant::findOrFail(self::encryptOrDecrypt($request->id, false));
                 $data = self::generateModal($request);
                 return response()->json([
                     'status' => $entry->update($data),
@@ -29,7 +29,7 @@ class ApiController extends Controller
                 return response()->json([
                     'status' => true,
                     'data' => [
-                        'id' => $entry->id,
+                        'id' => self::encryptOrDecrypt($entry->id),
                     ],
                     'message' => 'saved successfully',
                 ]);
@@ -73,5 +73,16 @@ class ApiController extends Controller
             // dd($th);
             return [];
         }
+    }
+
+    protected function encryptOrDecrypt($data = '', $encrypt = true) {
+        if ($data == '') return '';
+        $ciphering = "AES-128-CTR";
+        $options = 0;
+        $encryption_iv = '1134457891015229';
+        $encryption_key = env('JWT_SECRET');
+        return ($encrypt) ? 
+            openssl_encrypt($data, $ciphering, $encryption_key, $options, $encryption_iv):
+            openssl_decrypt($data, $ciphering, $encryption_key, $options, $encryption_iv);
     }
 }
