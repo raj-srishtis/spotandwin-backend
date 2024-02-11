@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\ChallengeParticipant;
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
 use Illuminate\Http\Request;
 
 class ApiController extends Controller
@@ -10,7 +12,8 @@ class ApiController extends Controller
     public function index(Request $request) {
         if ($request->exists('id')) {
             try {
-                $entry = ChallengeParticipant::findOrFail(self::encryptOrDecrypt($request->id, false));
+                $token = JWT::decode($request->id, new Key(env('JWT_SECRET'), 'HS256'));
+                $entry = ChallengeParticipant::findOrFail($token->id);
                 $data = self::generateModal($request);
                 return response()->json([
                     'status' => $entry->update($data),
@@ -26,15 +29,15 @@ class ApiController extends Controller
             try {
                 $data = self::generateModal($request);
                 $entry = ChallengeParticipant::create($data);
+                $token = JWT::encode(['id' => $entry->id], env('JWT_SECRET'), 'HS256');
                 return response()->json([
                     'status' => true,
                     'data' => [
-                        'id' => self::encryptOrDecrypt($entry->id),
+                        'id' => $token,
                     ],
                     'message' => 'saved successfully',
                 ]);
             } catch (\Throwable $th) {
-                dd($th);
                 return response()->json([
                     'status' => false,
                     'message' => 'fSomething went wrong...',
@@ -75,14 +78,4 @@ class ApiController extends Controller
         }
     }
 
-    protected function encryptOrDecrypt($data = '', $encrypt = true) {
-        if ($data == '') return '';
-        $ciphering = "AES-128-CTR";
-        $options = 0;
-        $encryption_iv = '1134457891015229';
-        $encryption_key = env('JWT_SECRET');
-        return ($encrypt) ? 
-            openssl_encrypt($data, $ciphering, $encryption_key, $options, $encryption_iv):
-            openssl_decrypt($data, $ciphering, $encryption_key, $options, $encryption_iv);
-    }
 }
