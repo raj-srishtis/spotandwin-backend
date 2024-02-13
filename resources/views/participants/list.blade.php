@@ -19,6 +19,7 @@
     </div>
 </div>
 <div class="container">
+    <a href="{{ route('dashboard.download.csv') }}" class="btn btn-primary">Download CSV</a>
     <table id="participants-table">
         <thead>
             <tr>

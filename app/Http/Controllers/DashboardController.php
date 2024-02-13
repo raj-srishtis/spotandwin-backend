@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ChallengeParticipant;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DashboardController extends Controller
 {
@@ -38,5 +39,16 @@ class DashboardController extends Controller
     public function participantsList() {
         $participants = ChallengeParticipant::all();
         return view('participants.list', compact('participants'));
+    }
+    
+    public function downloadCsv() {
+        $participants = ChallengeParticipant::all();
+        
+        return Excel::download(function ($excel) use ($participants) {
+            $excel->setTitle('Challenge Participants');
+            $excel->sheet('Sheet 1', function ($sheet) use ($participants) {
+                $sheet->fromArray($participants);
+            });
+        }, 'challenge_participants.xlsx');
     }
 }

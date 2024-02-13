@@ -59,6 +59,7 @@
                                 </li>
                             @endif --}}
                         @else
+                            <li>Hi {{ Auth::user()->name }}</li>
                             <li class="nav-item">
                                 <a id="navbarDropdown" class="nav-link" href="{{route('dashboard.index')}}">
                                     Dashboard
