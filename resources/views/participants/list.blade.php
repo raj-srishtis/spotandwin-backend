@@ -78,22 +78,20 @@
             @endforeach
         </tbody>
     </table>
+    <p>
+        {{ $participants->links('pagination::bootstrap-4') }}
+    </p>
 </div>
 @endsection
 
 @push('css')
-    <!-- DataTables CSS -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+<style>
+
+</style>
 @endpush
     
 @push('js')    
-    <!-- DataTables JavaScript -->
-    <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+<script>
     
-    <script>
-        $(document).ready(function() {
-            $('#participants-table').DataTable();
-        });
-    </script>
-    
+</script>
 @endpush
