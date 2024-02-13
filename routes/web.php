@@ -22,3 +22,4 @@ Route::get('/', function () {
 Auth::routes(['register' => false]);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+Route::get('/participants-list', [DashboardController::class, 'participantsList'])->name('dashboard.participantsList');

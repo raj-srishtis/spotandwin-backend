@@ -76,6 +76,16 @@
                                     </form>
                                 </div>
                             </li>
+                            <li class="nav-item">
+                                <a id="navbarDropdown" class="nav-link" href="{{route('dashboard.index')}}">
+                                    Dashboard
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="navbarDropdown" class="nav-link" href="{{route('dashboard.participantsList')}}">
+                                    Participants List
+                                </a>
+                            </li>
                         @endguest
                     </ul>
                 </div>
