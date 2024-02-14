@@ -1,60 +1,99 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+<div class="container-fluid">
+    <div class="col-lg-12">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">Dashboard</div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<div class="container">
-    <p>
-        <h1>Total Participants</h1>
-        <h3>{{$total_participants_count}}</h3>
-    </p>
-    <p>
-        <h1>Web Activations</h1>
-        <h3>{{$web_participants_count}}</h3>
-    </p>
-    <p>
-        <h1>Mobile Activations</h1>
-        <h3>{{$mobile_participants_count}}</h3>
-    </p>
-    <p>
-        <h1>Next Button Clicks</h1>
-        <h3>{{$next_btn_count}}</h3>
-    </p>
-    <p>
-        <h1>Begin Challenge Clicks</h1>
-        <h3>{{$begin_challenge_click_count}}</h3>
-    </p>
-    <p>
-        <h1>Location Confirmed Clicks</h1>
-        <h3>{{$location_confirmed_click_count}}</h3>
-    </p>
-    <p>
-        <h1>Shares on FB</h1>
-        <h3>{{$fbshare_click_count}}</h3>
-    </p>
-    <p>
-        <h1>Shares on WhatsApp</h1>
-        <h3>{{$wtshare_click_count}}</h3>
-    </p>
-    <p>
-        <h1>Shares on X</h1>
-        <h3>{{$twshare_click_count}}</h3>
-    </p>
+    <div class="row">
+        <div class="col-lg-3">
+           <div class="card  mb-3">
+              <div class="card-header">Total Participants</div>
+              <div class="card-body">
+                 <p>Total Participants</p>
+                 <h5 class="card-title">{{$total_participants_count}}</h5>
+              </div>
+           </div>
+        </div>
+        <div class="col-lg-3">
+           <div class="card  mb-3">
+              <div class="card-header">Web Activations</div>
+              <div class="card-body">
+                 <p>Web Activations</p>
+                 <h5 class="card-title">{{$web_participants_count}}</h5>
+              </div>
+           </div>
+        </div>
+        <div class="col-lg-3">
+           <div class="card  mb-3">
+              <div class="card-header">Mobile Activations</div>
+              <div class="card-body">
+                 <p>Mobile Activations</p>
+                 <h5 class="card-title">{{$mobile_participants_count}}</h5>
+              </div>
+           </div>
+        </div>
+        <div class="col-lg-3">
+           <div class="card  mb-3">
+              <div class="card-header">Next Button Clicks</div>
+              <div class="card-body">
+                 <p>Next Button Clicks</p>
+                 <h5 class="card-title">{{$next_btn_count}}</h5>
+              </div>
+           </div>
+        </div>
+        <div class="col-lg-3">
+           <div class="card  mb-3">
+              <div class="card-header">Begin Challenge Clicks</div>
+              <div class="card-body">
+                 <p>Begin Challenge Clicks</p>
+                 <h5 class="card-title">{{$begin_challenge_click_count}}</h5>
+              </div>
+           </div>
+        </div>
+        <div class="col-lg-3">
+           <div class="card  mb-3">
+              <div class="card-header">Location Confirmed Clicks</div>
+              <div class="card-body">
+                 <p>Location Confirmed Clicks</p>
+                 <h5 class="card-title">{{$location_confirmed_click_count}}</h5>
+              </div>
+           </div>
+        </div>
+        <div class="col-lg-3">
+           <div class="card  mb-3">
+              <div class="card-header">Shares on FB</div>
+              <div class="card-body">
+                 <p>Shares on FB</p>
+                 <h5 class="card-title">{{$fbshare_click_count}}</h5>
+              </div>
+           </div>
+        </div>
+        <div class="col-lg-3">
+           <div class="card  mb-3">
+              <div class="card-header">Shares on WhatsApp</div>
+              <div class="card-body">
+                 <p>Shares on WhatsApp</p>
+                 <h5 class="card-title">{{$wtshare_click_count}}</h5>
+              </div>
+           </div>
+        </div>
+        <div class="col-lg-3">
+           <div class="card  mb-3">
+              <div class="card-header">Shares on X</div>
+              <div class="card-body">
+                 <p>Shares on X</p>
+                 <h5 class="card-title">{{$twshare_click_count}}</h5>
+              </div>
+           </div>
+        </div>
+    </div>
 </div>
 @endsection
 
