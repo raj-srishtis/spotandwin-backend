@@ -63,6 +63,12 @@ table.table {
     overflow-x: auto;
     white-space: nowrap;
 }
+
+.pull-right {
+    float: right;
+    background-color: #fff700 !important;
+    color: #000 !important;
+}
 /*-----------------------------------------------------------*/
 /*                    media css start*/
 /* ----------------------------------------------------------*/

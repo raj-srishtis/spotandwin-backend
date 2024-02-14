@@ -8,7 +8,7 @@
                 <div class="card">
                     <div class="card-header">
                         Participants List
-                        <a href="{{ route('dashboard.download.csv') }}" target="_blank" class="btn btn-primary">Download CSV</a>
+                        <a href="{{ route('dashboard.download.csv') }}" target="_blank" class="btn btn-primary pull-right">Download CSV</a>
                     </div>
                     <div class="card-body">
                         <div class="col-lg-12">
