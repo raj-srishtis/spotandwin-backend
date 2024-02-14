@@ -37,7 +37,7 @@ class DashboardController extends Controller
     }
     
     public function participantsList() {
-        $participants = ChallengeParticipant::paginate(100);
+        $participants = ChallengeParticipant::paginate(25);
         return view('participants.list', compact('participants'));
     }
     

@@ -1,0 +1,1 @@
+&copy; Spot &amp; Win
