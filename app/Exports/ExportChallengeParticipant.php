@@ -3,7 +3,6 @@
 namespace App\Exports;
 
 use App\Models\ChallengeParticipant;
-use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
@@ -14,11 +13,20 @@ class ExportChallengeParticipant implements FromCollection, WithHeadings
     */
     public function headings(): array
     {
-        return DB::getSchemaBuilder()->getColumnListing('challenge_participants');
+        return [
+            'id', 'next click','begin challenge click','sheikh found',
+            'location confirmed','name','email','age','mobile','fbshare','wtshare',
+            'twshare','time in seconds','language',
+        ]; 
     }
 
     public function collection()
     {
-        return ChallengeParticipant::all();
+        return ChallengeParticipant::whereNotNull('mobile')
+            ->orWhereNotNull('email')
+            ->select('id', 'nextClick','beginChallengeClick','sheikhFound',
+            'locationConfirmed','name','email','age','mobile','fbshare','wtshare',
+            'twshare','timeInSeconds','language')
+            ->get();
     }
 }
