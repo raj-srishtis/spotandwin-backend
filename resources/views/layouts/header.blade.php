@@ -24,7 +24,7 @@
  @else
  <div class="btn-group">
     <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-    <i class="bi bi-person-circle"></i>
+        <i class="bi bi-person-circle"></i> <span style="font-size: 18px;">{{ Auth::user()->name }}</span>
     </button>
     <ul class="dropdown-menu dropdown-menu-end">
        <li>
