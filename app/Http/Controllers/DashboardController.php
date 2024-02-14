@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ExportChallengeParticipant;
 use App\Models\ChallengeParticipant;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Excel as ExcelExcel;
 use Maatwebsite\Excel\Facades\Excel;
 
 class DashboardController extends Controller
@@ -42,13 +45,6 @@ class DashboardController extends Controller
     }
     
     public function downloadCsv() {
-        $participants = ChallengeParticipant::all();
-        
-        return Excel::download(function ($excel) use ($participants) {
-            $excel->setTitle('Challenge Participants');
-            $excel->sheet('Sheet 1', function ($sheet) use ($participants) {
-                $sheet->fromArray($participants);
-            });
-        }, 'challenge_participants.xlsx');
+        return Excel::download(new ExportChallengeParticipant, 'challenge-participants-'.Carbon::now()->timestamp.'.xlsx', ExcelExcel::XLSX);
     }
 }
