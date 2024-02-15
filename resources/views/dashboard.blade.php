@@ -23,9 +23,9 @@
         </div>
         <div class="col-lg-3">
            <div class="card  mb-3">
-              <div class="card-header">Web Activations</div>
+              <div class="card-header">Desktop Activations</div>
               <div class="card-body">
-                 <p>Web Activations</p>
+                 <p>Desktop Activations</p>
                  <h5 class="card-title">{{$web_participants_count}}</h5>
               </div>
            </div>
